@@ -13,8 +13,8 @@ class Filosofo(Thread):
 
     def run(self):
         while True:
-            print(f"{self.nome} está pensando")
-            sleep(random(5, 15))
+            print(f"{self.nome} está meditando")
+            sleep(random(0, 2))
             self.comer()
 
     def comer(self):
