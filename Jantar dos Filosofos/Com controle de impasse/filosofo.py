@@ -1,30 +1,34 @@
-from random import seed, uniform
+from random import seed, random
 from time import sleep
 from threading import Thread, Lock
 from palito import *
 
 class Filosofo(Thread):
-    def __init__(self, nome, palito_esquerda, palito_direita):
+    def __init__(self, nome, garfo_esquerda, garfo_direita, semaforo_controle):
         Thread.__init__(self)
         self.nome = nome
-        self.palito_esquerda = palito_esquerda
-        self.palito_direita = palito_direita
+        self.garfo_esquerda = garfo_esquerda
+        self.garfo_direita = garfo_direita
+        self.semaforo_controle = semaforo_controle 
 
     def run(self):
         while True:
-            print(f"> {self.nome} está pensando")
-            sleep(uniform(5, 15))
+            print(f"{self.nome} está pensando")
+            sleep(random(5, 15))
             self.comer()
 
     def comer(self):
-        palito1, palito2 = self.palito_esquerda, self.palito_direita
+        garfo1, garfo2 = self.garfo_esquerda, self.garfo_direita
 
-        palito1.pegar()
-        palito2.pegar()
+        with self.semaforo_controle:
+            garfo1.pegar()
+            garfo2.pegar()
 
-        print(f"> {self.nome} começou a comer")
-        sleep(uniform(5, 10))
-        print(f"> {self.nome} parou de comer")
+            print(f"{self.nome} está comendo")
+            sleep(random(0, 2))
+            print(f"{self.nome} terminou de comer")
 
-        palito1.soltar()
-        palito2.soltar()
+            garfo2.soltar()
+            garfo1.soltar()
+
+

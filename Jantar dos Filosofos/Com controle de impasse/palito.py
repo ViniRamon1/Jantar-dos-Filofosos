@@ -1,11 +1,13 @@
+
 from threading import Semaphore
 
 class Palito:
     def __init__(self):
-        self.semaforo = Semaphore(1)  # Inicialmente, o semáforo permite apenas um filósofo por vez.
+        self.semaphore = Semaphore(1)  # Inicializa um semáforo com valor 1 (disponível)
 
     def pegar(self):
-        self.semaforo.acquire()
+        self.semaphore.acquire()
 
     def soltar(self):
-        self.semaforo.release()
+        self.semaphore.release()
+

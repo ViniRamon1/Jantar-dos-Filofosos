@@ -4,8 +4,6 @@ Deadlock é evitado para nunca esperar um garfo com outro garfo na mão
 Se falhar ao pegar o segundo garfo, o primeiro garfo é largado e os garfos são trocados
 '''
 
-# jantar.py (sem controle de impasse)
-
 from filosofo import Filosofo
 from palito import Palito
 from threading import Thread
