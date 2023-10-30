@@ -7,8 +7,6 @@ Se falhar ao pegar o segundo garfo, o primeiro garfo é largado e os garfos são
 from filosofo import Filosofo
 from palito import Palito
 from threading import Thread, Semaphore
-import random
-import time
 
 def main():
     num_filosofos = 5

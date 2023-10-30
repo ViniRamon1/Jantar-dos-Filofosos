@@ -1,4 +1,4 @@
-from random import seed, random
+from random import seed, random, uniform
 from time import sleep
 from threading import Thread, Lock
 from palito import *
@@ -13,7 +13,7 @@ class Filosofo(Thread):
     def run(self):
         while True:
             print(f"> {self.nome} está meditando")
-            sleep(random(0, 2))
+            sleep(uniform(0, 2))
             self.comer()
 
     def comer(self):
@@ -23,7 +23,7 @@ class Filosofo(Thread):
         palito2.pegar()
 
         print(f"> {self.nome} começou a comer")
-        sleep(random(0, 2))
+        sleep(uniform(0, 2))
         print(f"> {self.nome} parou de comer")
 
         palito1.soltar()
